@@ -4,6 +4,58 @@
 Главная стрвница
 {% endblock %}
 
+
+{% block scripts %}
+
+
+    function validateInput() {
+        var a = document.getElementById('a').value;
+        var b = document.getElementById('b').value;
+        var c = document.getElementById('c').value;
+
+        if (isNaN(a) || a === "" || isNaN(b) || b === "" || isNaN(c) || c === "") {
+            document.getElementById('solve').disabled = true;
+        } else {
+            document.getElementById('solve').disabled = false;
+        }
+    }
+
+{% endblock %}
+
 {% block body %}
-<h1>Основная страница сайта</h1>
+ <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4 fw-bold lh-1 mb-3">Введите коэффициенты квадратного уравнения:  aX<sup><small>2</small></sup> + bX + c </h1>
+
+                <p class="col-lg-10 fs-4"></p>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                <form class="p-4 p-md-5 border rounded-3 bg-light" action="/" method="post">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="a" name="a" oninput="validateInput()" placeholder="Enter a">
+                        <label for="a">a</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="b" name="b" oninput="validateInput()" placeholder="Enter b">
+                        <label for="b">b</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="c" name="c" oninput="validateInput()" placeholder="Enter c">
+                        <label for="c">c</label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit" id="solve" disabled>Решить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% if result %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2>{{ result }}</h2>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

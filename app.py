@@ -1,12 +1,28 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
 
 
-@app.route('/')
-@app.route('/home')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    result = ""
+    if request.method == 'POST':
+        a = float(request.form['a'])
+        b = float(request.form['b'])
+        c = float(request.form['c'])
+
+        D = b ** 2 - 4 * a * c
+        if D > 0:
+            x1 = (-b + D ** 0.5) / (2 * a)
+            x2 = (-b - D ** 0.5) / (2 * a)
+            result = f"Корни уравнения: x1 = {x1}, x2 = {x2}"
+        elif D == 0:
+            x = -b / (2 * a)
+            result = f"Уравнение имеет один корень: x = {x}"
+        else:
+            result = "Уравнение не имеет действительных корней"
+
+    return render_template('index.html', result=result)
 
 
 @app.route('/about')
@@ -17,6 +33,8 @@ def about():
 @app.route('/user/<string:name>/<int:id>')
 def user(name, id):
     return f'User page: {name} - {id}'
+
+
 
 
 if __name__ == "__main__":
