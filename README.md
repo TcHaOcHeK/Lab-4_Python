@@ -14,5 +14,5 @@
 
 
 
-![Lab-3_4](https://github.com/TcHaOcHeK/Lab-3_Python/assets/160489385/e94e912f-2d70-4443-af06-78d2bd0ad138)
 
+![Lab-3_4](https://github.com/TcHaOcHeK/Lab-3_Python/assets/160489385/5dc2c369-032f-48ac-be9c-d121003e466a)
