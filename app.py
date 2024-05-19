@@ -10,7 +10,7 @@ def index():
         a = float(request.form['a'])
         b = float(request.form['b'])
         c = float(request.form['c'])
-        if a !=0 and b!=0 and c!=0:
+        if a != 0:
             D = b ** 2 - 4 * a * c
             if D > 0:
                 x1 = (-b + D ** 0.5) / (2 * a)
@@ -21,7 +21,7 @@ def index():
                 result = f"Уравнение имеет один корень: x = {x}"
             else:
                 result = "Уравнение не имеет действительных корней"
-        elif a == 0:
+        else:
             if b == 0:
                 if c == 0:
                     result = "Бесконечное количество решений"
